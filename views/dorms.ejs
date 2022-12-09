@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Dorms</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-not-logged-in.ejs') %>
+
+    <!-- UNIVERSITIES -->
+    <div class="univ-container">
+        <!-- Universities: HEADER -->
+        <div class="univ-header-container">
+            <p class="univ-header__header">Dorms around <span id="dorms-uni-header">Universities</span></p>
+        </div>
+
+        <!-- Universities: FILTER -->
+        <div class="univ-filter">
+            <div id="filter__container--university" class="univ-filter__button-container">
+                <button class="univ-filter__button">
+                    <div class="univ-filter__button-text" id="univ-filter-university-btn">
+                        University 
+                    </div>
+                    <div class="univ-filter__button-arrow">
+                        <i class='fas fa-angle-down'></i>
+                    </div>
+                </button>
+                <div id="filter__dropdown--university" class="univ-filter__dropdown">
+                    <a onclick="changeFilter(this)" id="filter-all-uni">All Universities</a>
+                    <a onclick="changeFilter(this)" id="filter-UST">University Of Santo Tomas</a>
+                    <a onclick="changeFilter(this)" id="filter-UP">University Of The Philippines</a>
+                    <a onclick="changeFilter(this)" id="filter-ADMU">Ateneo De Manila University</a>
+                    <a onclick="changeFilter(this)" id="filter-DLSU">De La Salle University</a>
+                </div>
+            </div>
+            <div id="filter__container--price-range" class="univ-filter__button-container">
+                <button class="univ-filter__button">
+                    <div class="univ-filter__button-text">
+                        Price Range
+                    </div>
+                    <div class="univ-filter__button-arrow">
+                        <i class='fas fa-angle-down'></i>
+                    </div>
+                </button>
+                <div id="filter__dropdown--price-range" class="univ-filter__dropdown">
+                    <a onclick="changeFilter(this)" id="filter-all-price">All Price Ranges</a>
+                    <a onclick="changeFilter(this)" id="filter-3000">₱3000 - ₱3999</a>
+                    <a onclick="changeFilter(this)" id="filter-4000">₱4000 - ₱4999</a>
+                    <a onclick="changeFilter(this)" id="filter-5000">₱5000 - ₱5999</a>
+                    <a onclick="changeFilter(this)" id="filter-6000">₱6000 - ₱6999</a>
+                    <a onclick="changeFilter(this)" id="filter-7000">₱7000 - ₱7999</a>
+                    <a onclick="changeFilter(this)" id="filter-8000">₱8000 - ₱8999</a>
+                    <a onclick="changeFilter(this)" id="filter-9000">₱9000 - ₱9999</a>
+                    <a onclick="changeFilter(this)" id="filter-10000">₱10000 and above</a>
+                </div>
+            </div>
+            <div id="filter__container--bedrooms" class="univ-filter__button-container">
+                <button class="univ-filter__button">
+                    <div class="univ-filter__button-text">
+                        Bedrooms
+                    </div>
+                    <div class="univ-filter__button-arrow">
+                        <i class='fas fa-angle-down'></i>
+                    </div>
+                </button>
+                <div id="filter__dropdown--bedrooms" class="univ-filter__dropdown">
+                    <a onclick="changeFilter(this)" id="filter-all-br">All Bedrooms</a>
+                    <a onclick="changeFilter(this)" id="filter-1-br">1 bedroom</a>
+                    <a onclick="changeFilter(this)" id="filter-2-br">2 bedroom</a>
+                    <a onclick="changeFilter(this)" id="filter-3-br">3 bedroom</a>
+                    <a onclick="changeFilter(this)" id="filter-4-br">4 bedroom</a>
+                    <a onclick="changeFilter(this)" id="filter-5-br">5 bedroom</a>
+                    <a onclick="changeFilter(this)" id="filter-6-br">6 bedroom</a>
+                </div>
+            </div>
+            <div id="filter__container--persons" class="univ-filter__button-container">
+                <button class="univ-filter__button">
+                    <div class="univ-filter__button-text">
+                        Sharing
+                    </div>
+                    <div class="univ-filter__button-arrow">
+                        <i class='fas fa-angle-down'></i>
+                    </div>
+                </button>
+                <div id="filter__dropdown--persons" class="univ-filter__dropdown">
+                    <a onclick="changeFilter(this)" id="filter-all-sh">All Sharing</a>
+                    <a onclick="changeFilter(this)" id="filter-1-sh">Solo</a>
+                    <a onclick="changeFilter(this)" id="filter-2-sh">2 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-3-sh">3 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-4-sh">4 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-5-sh">5 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-6-sh">6 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-7-sh">7 persons</a>
+                    <a onclick="changeFilter(this)" id="filter-8-sh">8 persons</a>
+                </div>
+            </div>
+        </div>
+        <!-- Universities: LISTINGS -->
+        <div class="univ-list-container" id="property-container">
+                <% for (let i = 0; i < items.length; i++) { %>
+                    <div class="univ-list__item" id="property-1">
+                        <img alt="" class="univ-list__dorm-img" src="data:image/<%=items[i].dorm_photos.contentType%>;base64,<%=items[i].dorm_photos.data[0].toString('base64')%>">
+
+                        <a href="/dorm-info-owner/<%=items[i].dorm_id%>" class="univ-list__link">
+                            <div class="univ-list__overlay">
+                                <div class="univ-list__text-container">
+                                    <p id="list__text--title" class="univ-list__text"><%=items[i].dorm_name%></p>
+                                    <p class="univ-list__text">Price: <span id="list__text--price">₱<%=items[i].price%>/month</span></p>
+                                    <p class="univ-list__text">BR: <span id="list__text--bedrooms"><%=items[i].bedroom%> bedrooms</span></p>
+                                    <p class="univ-list__text">Sharing: <span id="list__text--persons"><%=items[i].sharing%> persons</span></p>
+                                    <p class="univ-list__text">Near <span id="list__text--university"><%=items[i].uni%></span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% }%>
+                <!-- <div class="univ-list__item" id="property-1">
+                    <img src="images/property-1.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Eldia Residences</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱3000/month</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">2 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">4 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">University of Santo Tomas</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-2">
+                    <img src="images/property-2.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info-owner" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Yellow Residences</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱3500</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">2 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">4 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">Ateneo de Manila University</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-3">
+                    <img src="images/property-3.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Gold Residences</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱3900</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">1 bedroom</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">2 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">University of Santo Tomas</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-4">
+                    <img src="images/property-4.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Teeda Apartments</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱6200</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">4 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">6 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">De La Salle University</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-5">
+                    <img src="images/property-5.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">GTX Apartments</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱6300</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">1 bedroom</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">Solo</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">Ateneo de Manila University</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-6">
+                    <img src="images/property-6.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Dude Dormitory</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱7200</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">3 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">3 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">University of the Philippines</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-7">
+                    <img src="images/property-7.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Chong Residences</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱7800</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">2 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">4 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">De La Salle University</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-8">
+                    <img src="images/property-8.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Tuition Free Apartments</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱10000</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">2 bedrooms</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">2 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">University of the Philippines</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="univ-list__item" id="property-9">
+                    <img src="images/property-9.JPG" alt="" class="univ-list__dorm-img">
+                    <a href="/dorm-info" class="univ-list__link">
+                        <div class="univ-list__overlay">
+                            <div class="univ-list__text-container">
+                                <p id="list__text--title" class="univ-list__text">Cattleya Dormitory</p>
+                                <p class="univ-list__text">Price: <span id="list__text--price">₱15000</span></p>
+                                <p class="univ-list__text">BR: <span id="list__text--bedrooms">1 bedroom</span></p>
+                                <p class="univ-list__text">Sharing: <span id="list__text--persons">2 persons</span></p>
+                                <p class="univ-list__text">Near <span id="list__text--university">University of Santo Tomas</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div> -->
+                <div class="univ-list__item" id="empty-property-1" style="visibility: hidden;"></div>
+                <div class="univ-list__item" id="empty-property-2" style="visibility: hidden;"></div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

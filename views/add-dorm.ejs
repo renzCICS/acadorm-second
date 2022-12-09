@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Add Dorm</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-logged-in.ejs') %>
+
+    <!-- ADD DORM -->
+    <div class="dorm-info">
+        <div class="dorm-info-box edit-dorm-box">
+            <form class="dorm-info__header edit-dorm__header" id="dorm-details-form" method="post" action="/<%=items[0].owner_id %>/add-dorm" enctype="multipart/form-data">
+                <div class="dorm-info__title-container edit-dorm__title-container">
+                    <div class="dorm-info__title-section edit-dorm__title-section">
+                        <input type="text" name="dorm_name" placeholder="Dorm Name" class="edit-dorm__title--input" oninput="capitalizeFirstLetter(this)" maxlength="32" required>
+                        <p class="dorm-info__near edit-dorm__near">Near <input type="text" name="uni" placeholder="University/ies" class="edit-dorm__university--input" list="defaultUniversities" oninput="capitalizeFirstLetter(this)" required pattern="University Of Santo Tomas|Ateneo De Manila University|De La Salle University|University Of The Philippines">
+                            <datalist id="defaultUniversities">
+                                <option value="University Of Santo Tomas">
+                                <option value="University Of The Philippines">
+                                <option value="Ateneo De Manila University">
+                                <option value="De La Salle University">
+                            </datalist>
+                        </p>
+                    </div>
+                    <div class="dorm-info__price-section edit-dorm__price-section">₱<input type="number" name="price" placeholder="Price" class="edit-dorm__price--input" min="1000" max="100000" required>/month</div>
+                </div>
+                <div class="dorm-info__details-section edit-dorm__details-section">
+                    <div class="dorm-info__sharing edit-dorm__sharing">Sharing<span class="dorm-info__value">persons</span><input type="number" name="sharing" placeholder="1-6" class="edit-dorm__sharing--input" placeholder="1-6" class="edit-dorm__sharing--input" min="1" max="6" required></div>
+                    <div class="dorm-info__bedrooms edit-dorm__bedrooms">Bedrooms<input type="number" name="bedroom" placeholder="#" class="edit-dorm__bedrooms--input" min="1" max="10" required></div>
+                    <div class="dorm-info__baths edit-dorm__baths">Baths<input type="number" name="bath" placeholder="#" class="edit-dorm__baths--input" min="1" max="10" required></div>
+                    <div class="dorm-info__type edit-dorm__baths">Type<input type="text" name="type" placeholder="Condominium, Apartment, etc." class="edit-dorm__type--input" list="defaultDormTypes" oninput="capitalizeFirstLetter(this)" pattern="Condominium|Apartment|Room/s|Bungalow" maxlength="25" required>
+                        <datalist id="defaultDormTypes">
+                            <option value="Condominium">
+                            <option value="Apartment">
+                            <option value="Room/s">
+                            <option value="Bungalow">
+                        </datalist>
+                    </div>
+                    <div class="dorm-info__location edit-dorm__location">Location <input type="text" name="location" placeholder="Building, Street, City" class="edit-dorm__location--input" maxlength="130" required></div>
+                </div>
+            </form>
+            <div class="dorm-info__gallery-container edit-dorm__gallery-container">
+            </div>
+            <div class="edit-dorm__edit-photos-section">
+                <div class="edit-dorm__button-container add-dorm__button-container">         
+                    <input type="file" name="dorm_photos" id="file" form="dorm-details-form" style="display: none;" accept="image/*" onchange="validateUpload(this)" onselect="limitUpload()" multiple>
+                    <button class="edit-dorm__button edit-dorm__upload" onclick="thisFileUpload()">Upload Photos</button>
+                    <button class="edit-dorm__button edit-dorm__delete-photo" onclick="deleteUpload(this)">Delete Photo</button>
+                </div>
+            </div>
+            <div class="dorm-info__desc-section edit-dorm__desc-section">
+                <span class="dorm-info__desc-title edit-dorm__desc-title">Dorm Description</span>
+                <textarea name="description" form="dorm-details-form" class="edit-dorm__desc-text--input" placeholder="Write a short description about the unit (e.g., amenities, nearby groceries, restaurants, & mall)" maxlength="1000" required></textarea>
+                <div class="edit-dorm__button-container edit-dorm__button-container--bottom">         
+                    <button type="submit" class="edit-dorm__button edit-dorm__save" form="dorm-details-form" >Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

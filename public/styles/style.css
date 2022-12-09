@@ -1,0 +1,1220 @@
+* {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+
+/* NAV BAR */
+.nav {
+    display: flex;
+    align-items: center;
+    border-bottom: #d3d3d3 2px solid;
+    font-size: calc(8px + 0.525vw);
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: white;
+    padding-inline: 1.75vw;
+    padding-top: .5vw;
+    padding-bottom: .8vw;
+    z-index: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav a:not(.nav__logo--link, .nav__log-in--link) {
+    color: #8a8a8a;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.5s, border-bottom 0.5s;
+}
+.nav a:not(.nav__logo--link, .nav__log-in--link):hover {
+    color: black;
+} 
+.nav a:not(.nav__logo--link, .nav__dorms,.nav__log-in--link):hover {
+    border-bottom: 1px solid black;
+} 
+
+.nav__logo--link{
+    margin-right: 4vw;
+}
+.nav__logo{
+    width: 6vw;
+    min-width: 55px;
+}
+
+.nav__dorms-container{
+    margin-left: auto;
+    margin-right: 2.71vw;
+}
+
+.nav__dorms{
+    padding-bottom: .75vw;
+    padding-inline: 6.53vw;
+}
+#nav__dorms-id:hover + #nav__dorms-dd-id{
+    border-top: 1px black solid;
+}
+
+.nav__dorms-container:hover .nav__dorms-dropdown {
+    visibility: visible;
+    opacity: 1
+} 
+.nav__dorms-dropdown{
+    visibility: hidden;
+    position: absolute;
+    border-top: 1px transparent solid;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+    opacity: 0;
+    transition: color 0.5s, visibility 0.2s, opacity 0.2s linear;
+    overflow: hidden;
+    margin-top: 0.9vw;
+}
+.nav__dorms-dropdown a{
+   padding-block: 1.1vw;
+   padding-inline: 1vw 1.25vw;
+   width: 15.9vw;
+   min-width: 75px;
+   max-width: 387px;
+   text-align: left;
+   word-wrap: break-word;
+   text-decoration: none;
+   display: block;
+   font-size: calc(6px + 0.625vw);
+   transition: background-color 0.5s;
+   background-color: #f9f9f9;
+   color: #8a8a8a;
+   text-decoration: none;
+   transition: color 0.5s;
+   font-weight: bold;
+   z-index: 3;
+}
+.nav__dorms-dropdown a:hover {
+    background-color: #f1f1f1;
+    border-bottom: black 1px solid;
+}
+
+
+.nav__about{
+    margin-right: 4.6vw;
+}
+.nav__log-in{
+    font-size: calc(7px + 0.5vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: calc(3px + .825vw);
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.nav__my-account{
+    font-size: calc(3px + 0.6vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: calc(2px + .825vw);
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.nav__log-in:hover, .nav__my-account:hover {
+    background-color: white;
+    color: black;
+}
+
+/* HOME */
+.home__background{
+    position: absolute;
+    height: auto;
+    z-index: -1;
+}
+.home-bg--img {
+    position:absolute;
+    z-index: -2;
+    width: 98vw;
+    height: 130%;
+}
+
+.home-bg__overlay {
+    position: absolute;
+    height: 130%;
+    width: 98vw;
+    opacity: 1;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.home{
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.home__logo--link{
+    margin-bottom: 2.25vw;
+}
+.home__logo{
+    min-width: 175px;
+    width: 18.737vw;
+}
+
+
+.home__search-box-input{
+    padding-block: 1vw;
+    font-size: calc(7px + .723vw);
+    width: 41vw;
+    min-width: 200px;
+    max-width: 793px;
+    text-align: center;
+    padding-inline: 20px;
+}
+
+.home__search-box-input:invalid{
+    text-align: left;
+}
+
+.home__search-dropdown{
+    visibility: hidden;
+    position: absolute;
+    border-left: solid black 1px;
+    border-bottom: solid black 1px;
+    border-right: solid black 1px;
+    border-radius: 2px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: color 0.5s, opacity 0.2s linear;
+    color: black;
+}
+
+.home__search-dropdown a {
+    max-width: 792px;
+    width: 40.85vw;
+    min-width: 199px;
+    padding-inline: 22px;
+    padding-block: .9vw;
+    text-decoration: none;
+    display: block;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.1s;
+    font-weight: normal;
+    font-size: calc(7px + .65vw);
+    background-color: white;
+    display: none;
+}
+.home__search-dropdown a:hover {
+    background-color: #ddd;
+}
+
+/* UNIVERSITIES */
+.univ-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25rem;
+}
+
+/* Univ Header */
+.univ-header-container{
+    display: flex;
+    padding-block: 2.5vw;
+    font-size: calc(5px + 1.175vw);
+}
+.univ-header__header {
+    align-self: center;
+    background-color: black;
+    color: white;
+    padding-block: 0.75vw;
+    padding-left: 12vw;
+    padding-right: 1.65vw;
+}
+
+/* Univ Filter */
+.univ-filter-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.univ-filter-container *{
+    text-transform: none;
+}
+.univ-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:-webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.univ-filter *{
+    text-transform: none;
+}
+
+.univ-filter__button-container:hover .univ-filter__dropdown{
+    visibility: visible;
+    opacity: 1;
+}
+.univ-filter__button {
+    width: 100%;
+    text-align: left;
+    background-color: #8a8a8a;
+    color: white;
+    font-weight: normal;
+    font-size: calc(7px + 0.5vw);
+    padding-inline: calc(4px + .8vw);
+    padding-block: calc(2px + 1vw);
+    border: none 1px rgb(107, 107, 107);
+    transition: background-color 0.5s;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.univ-filter__button-text{
+    text-align: left;
+}
+.univ-filter__button-arrow{
+    text-align: right;
+}
+.univ-filter__button:hover{
+    background-color: rgb(107, 107, 107);
+}
+#filter__container--university{
+    min-width: 120px;
+    width: 22.25vw;
+}
+#filter__container--price-range{
+    min-width: 110px;
+    width: 16.32vw;
+}
+#filter__container--bedrooms{
+    min-width: 100px;
+    width: 10.38vw;
+}
+#filter__container--persons{
+    min-width: 90px;
+    width: 10.38vw;
+}
+
+.univ-filter__dropdown{
+    visibility: hidden;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    opacity: 0;
+    transition: color 0.5s, visibility 0.2s, opacity 0.2s linear;
+}
+.univ-filter__dropdown a {
+    max-width: 100%;
+    padding: 9px;
+    text-decoration: none;
+    display: block;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.25s;
+    font-weight: normal;
+    font-size: calc(10px + 0.275vw);
+    background-color: #f1f1f1;
+    z-index: 2;
+}
+.univ-filter__dropdown a:hover {
+    background-color: #ddd;
+}
+#filter__dropdown--university{
+    min-width: 120px;
+    width: 22.25vw;
+
+}
+#filter__dropdown--price-range{
+    min-width: 110px;
+    width: 16.32vw;
+}
+#filter__dropdown--bedrooms{
+    min-width: 100px;
+    width: 10.38vw;
+}
+#filter__dropdown--persons{
+    min-width: 90px;
+    width: 10.38vw;
+}
+
+
+/* Univ List */
+.univ-list-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/2, max(241px, 100%/4)), 1fr));
+    margin-top: 3%;
+    margin-inline: 10%;
+    justify-items: center;
+    grid-gap: 2vw 4%;
+    align-self: center;
+}
+
+.univ-list__item{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.univ-list__dorm-img{
+    display: block;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.univ-list__overlay {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background: rgba(0,0,0,.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.univ-list__link{
+    position: relative;
+    bottom: 100%;
+}
+
+.univ-list__item:hover .univ-list__overlay {
+    opacity: 1;
+}
+.univ-list__text-container {
+    display:grid;
+    align-items: start;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr .5fr;
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    opacity: 1;
+    transition: .5s ease;
+    color: white;
+}
+.univ-list__text{
+    margin-left: 15px;
+}
+.univ-list__text:not(#list__text--title){
+    font-size: max(1vw, 10.5px);
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+#list__text--title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: max(1.25vw, 12.5px);
+}
+#list__text--university{
+    font-weight:bold;
+}
+
+/* LOG IN */
+.log-in{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.log-in__box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.75%;
+    align-items: center;
+    width: 25vw;
+    max-width: 400px;
+    padding-top: 2.3%;
+    border: solid 2px rgb(107, 107, 107, 0.75);
+    padding-bottom: 4.8%;
+    margin-bottom: 1.8%;
+
+}
+
+.log-in__input{
+    margin-block: 3%;
+    padding-block: 3.4%;
+    padding-inline: 4%;
+    font-size: calc(3px + .75vw);
+    width: 50%;
+}
+#log-in__password {
+    margin-bottom: 3%;
+}
+
+.log-in__forgot-pw {
+    text-decoration: none;
+    color: black;
+    font-size: calc(2px + 0.675vw);
+    margin-bottom: 9%;
+    text-decoration: none;
+    transition: color 0.125s, text-decoration 0.125s;
+    margin-left: 23%;
+    align-self: flex-start;
+}
+
+.log-in__forgot-pw:hover {
+    text-decoration: underline;
+    color: rgb(100, 100, 100);
+}
+
+.log-in__button{
+    font-size: calc(3px + 0.9vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding-block: calc(1px + .9vw);
+    padding-inline: calc(1px + 1.2vw);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.log-in__button:hover {
+    background-color: white;
+    color: black;
+}
+
+.log-in__register--text-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 0.75%;
+}
+.log-in__register--text{
+    margin: 0;
+    font-size: calc(3px + 0.9vw);
+}
+
+.log-in__register {
+    font-size: calc(3px + 0.9vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding-block: calc(1px + .9vw);
+    padding-inline: calc(1px + 1.2vw);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.log-in__register:hover {
+    background-color: white;
+    color: black;
+}
+
+/* REGISTER */
+#register__box{
+    padding-bottom: 3%;
+}
+
+#register__box > input{
+    margin-block: 1.75%;
+}
+
+.register__register--link{
+    margin-top: 8%
+}
+
+/* FORGOT PASSWORD */
+.forgot-pw__box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.25%;
+    align-items: center;
+    width: 26vw;
+    max-width: 600px;
+    padding-top: 2%;
+    border: solid 2px rgb(107, 107, 107, 0.75);
+    padding-bottom: 3%;
+    margin-bottom: 1.8%;
+}
+
+.forgot-pw__title{
+    font-size: calc(4px + .75vw);
+    font-weight: bold;
+    margin: 0;
+}
+.forgot-pw__msg{
+    font-size: calc(3px + .7vw);
+    margin-inline: 9%;
+    text-align: justify;
+}
+.forgot-pw__input{
+    margin-top: 1%;
+    margin-bottom: 6%;
+    padding-block: 3.4%;
+    padding-inline: 4%;
+    font-size: calc(3px + .75vw);
+    width: 50%;
+}
+
+/* VERIFICATION */
+.verification__box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.25%;
+    align-items: center;
+    width: 26vw;
+    max-width: 600px;
+    padding-top: 3%;
+    border: solid 2px rgb(107, 107, 107, 0.75);
+    padding-bottom: 4.8%;
+    margin-bottom: 1.8%;
+}
+
+.verification__title{
+    font-size: calc(4px + .75vw);
+    align-self: center;
+    font-weight: bold;
+    margin: 0;
+}
+.verification__msg{
+    font-size: calc(3px + .7vw);
+    align-self: center;
+    margin-bottom: 7%;
+    margin-inline: 9%;
+    word-wrap: break-word;
+    text-align: justify;
+}
+.verification__resend--link{
+    align-self: center;
+}
+.verification__resend{
+    text-transform: none;
+    font-size: calc(2px + 0.8vw);
+}
+.verification__back{
+    text-decoration: underline;
+    margin: 0;
+    font-size: calc(4px + 1vw);
+    color: black;
+    transition: color 0.25s;
+}
+.verification__back:hover {
+    color: rgb(100, 100, 100);
+}
+
+
+/* DORM INFO */
+
+.dorm-info{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vw;
+}
+
+.dorm-info-box{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 55vw;
+    min-width: 280px;
+    height: fit-content;
+}
+
+.dorm-info-box > div{
+    width: 100%;
+}
+
+.dorm-info__header {
+    display: flex;
+    flex-direction: column;
+    border-inline: rgb(107, 107, 107, 0.4) .1vw solid;
+}
+
+.dorm-info__title-container{
+    display: flex;
+    flex-direction: column;
+}
+.dorm-info__title-section{
+    padding-top: 3%;
+}
+.dorm-info__title{
+    font-size: calc(11px + 1.5vw);
+    font-weight: bold;
+    padding-left: 3vw;
+}
+.dorm-info__near{
+    font-size: calc(7px + 0.5vw);
+    margin: 0;
+    margin-top: .8%;
+    padding-left: 3vw;
+}
+.dorm-info__university{
+    font-weight: bold;
+}
+.dorm-info__price-section {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 4.2vw;
+    min-height: 27px;
+    color: white;
+    margin-top: 4%;
+    font-size: calc(7px + 1.2vw);
+    padding-left: 2.75vw;
+}
+.dorm-info__details-section{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+    height: 16vw;
+    margin-inline: 2.75vw;
+    color: rgb(77, 77, 77);
+    font-size: calc(6px + 0.7vw);
+}
+.dorm-info__details-section > div{
+    padding-bottom: .3vw;
+    border-bottom: rgb(107, 107, 107, 0.2) 0.1vw solid;
+    display: block;
+    margin-bottom: 0.5vw;
+
+}
+.dorm-info__value {
+    float: right;
+    color: black;
+}
+
+/* Dorm Info: GALLERY */
+.dorm-info__gallery-container{
+    position: relative;
+	overflow: hidden;
+	height: fit-content;
+    display: flex;
+    border-inline: rgb(107, 107, 107, 0.4) .1vw solid;
+}
+
+.dorm-info__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Slider */
+.dorm-info__gallery{
+    height: 100%;
+	white-space: nowrap;
+	font-size: 0;
+	transition: 0.8s;
+}
+
+/* Slides */
+.dorm-info__gallery > *{
+	display: inline-block;
+	white-space: normal;
+	vertical-align: top;
+	height: 100%;
+	width: 100%;
+	background: none 50% no-repeat;
+	background-size: cover;
+}
+
+/* PREV/NEXT, CONTAINERS & ANCHORS */
+.dorm-info__slider{
+    position: absolute;
+	z-index: 1;
+	top: 50%;
+	width: 100%;
+	height: 0;
+}
+.dorm-info__slider > div+div{
+    visibility: hidden; /* Hide all but first P/N container */
+}
+.dorm-info__slider a {
+    background: #fff;
+	position: absolute;
+	width: 5vw;
+	height: 5vw;
+    min-width: 40px;
+    min-height: 40px;
+	line-height: 60px; /* If you want to place numbers */
+	text-align: center;
+	opacity: 0.7;
+	-webkit-transition: 0.3s;
+					transition: 0.3s;
+	-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+	left: 0;
+}
+.dorm-info__slider a:hover {
+    opacity: 1;
+}
+.dorm-info__slider a+a {
+    left: auto;
+	right: 0;
+}
+
+/* Navigation */
+.dorm-info__bullets {
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	padding: 10px 0;
+	width: 100%;
+	text-align: center;
+}
+.dorm-info__bullets > a {
+	display: inline-block;
+	width:       30px;
+	height:      30px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(255, 255, 255, 1);
+	-webkit-transition: 0.3s;
+					transition: 0.3s;
+}
+.dorm-info__bullets > a+a {
+	background: rgba(255, 255, 255, 0.5); /* Dim all but first */
+}
+.dorm-info__bullets > a:hover {
+	background: rgba(255, 255, 255, 0.7) !important;
+}
+
+
+/* Navigation Buttons */
+/* All: */
+.dorm-info__gallery-container >s:target ~ .dorm-info__bullets >* {      background: rgba(255, 255, 255, 0.5);}
+/* Active */
+#s1:target ~ .dorm-info__bullets >*:nth-child(1) {background: rgba(255, 255, 255,   1);}
+#s2:target ~ .dorm-info__bullets >*:nth-child(2) {background: rgba(255, 255, 255,   1);}
+#s3:target ~ .dorm-info__bullets >*:nth-child(3) {background: rgba(255, 255, 255,   1);}
+#s4:target ~ .dorm-info__bullets >*:nth-child(4) {background: rgba(255, 255, 255,   1);}
+#s5:target ~ .dorm-info__bullets >*:nth-child(5) {background: rgba(255, 255, 255,   1);}
+#s6:target ~ .dorm-info__bullets >*:nth-child(6) {background: rgba(255, 255, 255,   1);}
+#s7:target ~ .dorm-info__bullets >*:nth-child(7) {background: rgba(255, 255, 255,   1);}
+#s8:target ~ .dorm-info__bullets >*:nth-child(8) {background: rgba(255, 255, 255,   1);}
+#s9:target ~ .dorm-info__bullets >*:nth-child(9) {background: rgba(255, 255, 255,   1);}
+#s10:target ~ .dorm-info__bullets >*:nth-child(10) {background: rgba(255, 255, 255,   1);}
+/* more slides? add here more rules */
+
+/* Prev/Next Containers Visibility */
+/* All: */
+.dorm-info__gallery-container >s:target ~ .dorm-info__slider >* {      visibility: hidden;}
+/* Active: */
+#s1:target ~ .dorm-info__slider >*:nth-child(1) {visibility: visible;}
+#s2:target ~ .dorm-info__slider >*:nth-child(2) {visibility: visible;}
+#s3:target ~ .dorm-info__slider >*:nth-child(3) {visibility: visible;}
+#s4:target ~ .dorm-info__slider >*:nth-child(4) {visibility: visible;}
+#s5:target ~ .dorm-info__slider >*:nth-child(5) {visibility: visible;}
+#s6:target ~ .dorm-info__slider >*:nth-child(6) {visibility: visible;}
+#s7:target ~ .dorm-info__slider >*:nth-child(7) {visibility: visible;}
+#s8:target ~ .dorm-info__slider >*:nth-child(8) {visibility: visible;}
+#s9:target ~ .dorm-info__slider >*:nth-child(9) {visibility: visible;}
+#s10:target ~ .dorm-info__slider >*:nth-child(10) {visibility: visible;}
+/* more slides? add here more rules */
+
+/* Slider Animation Positions */
+
+#s1:target ~ .dorm-info__gallery {transform: translateX(   0%); -webkit-transform: translateX(   0%);}
+#s2:target ~ .dorm-info__gallery {transform: translateX(-100%); -webkit-transform: translateX(-100%);}
+#s3:target ~ .dorm-info__gallery {transform: translateX(-200%); -webkit-transform: translateX(-200%);}
+#s4:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s5:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s6:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s7:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s8:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s9:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+#s10:target ~ .dorm-info__gallery {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+
+
+/* Dorm Info: DESCRIPTION */
+.dorm-info__desc-section{
+    padding-top: 3%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    text-align: justify;
+
+}
+.dorm-info__desc-title{
+    font-size: calc(9px + .8vw);
+    padding-inline: 1.5vw;
+}
+.dorm-info__desc-text {
+    padding-inline: 1.5vw;
+    font-size: calc(4px + 0.775vw);
+    text-indent: 2vw;
+    margin-bottom: 1.75vw;
+    line-height: calc(7px + 1.5vw);
+
+}
+.dorm-info__desc-interested {
+    padding-inline: 1.5vw;
+    font-size: calc(9px + .75vw);
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+.dorm-info__contact--link{
+    align-self: center;
+}
+.dorm-info__contact-button {
+    font-size: calc(5px + 0.75vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    width: 14vw;
+    height: 3.5vw;
+    min-width: 110px;
+    min-height: 30px;
+    padding: 1vw;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    margin: 1.25vw;
+}
+.dorm-info__contact-button:hover {
+    background-color: white;
+    color: black;
+}
+.dorm-info-owner__edit{
+    width: 11vw;
+    min-width: 65px;
+}
+
+/* EDIT DORM */
+
+.edit-dorm__title--input{
+    font-size: calc(11px + 1.5vw);
+    font-weight: bold;
+    margin-left: 3vw;
+}
+
+.edit-dorm__university--input{
+    font-weight: bold;
+    font-size: calc(7px + 0.5vw);
+    width: 25vw;
+    min-width: 140px;
+}
+
+.edit-dorm__price--input{
+    font-size: calc(7px + 1.2vw);
+    margin-inline: 0.5vw;
+    width: 12vw;
+}
+
+.edit-dorm__details-section{
+    height: 17vw;
+    min-height: 130px;
+}
+.edit-dorm__details-section input{
+    float:right;
+    text-align: right;
+    font-size: calc(4px + 0.55vw);
+}
+.edit-dorm__sharing--input{
+    width: 3.5vw;
+    margin-right: 0.3vw;
+}
+.edit-dorm__bedrooms--input{
+    width: 3.5vw;
+}
+.edit-dorm__baths--input{
+    width: 3.5vw;
+}
+.edit-dorm__type--input{
+    width: 20vw;
+    min-width: 100px;
+}
+.edit-dorm__location--input{
+    width: 37.5vw;
+    min-width: 200px;
+}
+
+/* Edit Dorm: DESCRIPTION */
+.edit-dorm__desc-text--input{
+    margin-inline: 1.5vw;
+    font-size: calc(3px + 0.775vw);
+    /* font-size: calc(6px + 0.7vw); */
+    /* text-indent: 2vw; */
+    width: 92.5%;
+    height: 12vw;
+    margin-top: .8vw;
+    margin-bottom: 1.8vw;
+    padding-block: 0.5vw;
+    padding-inline: 1.1vw;
+    display: block;
+    overflow: hidden;
+    resize: both;
+    line-height: calc(7px + 1.5vw);
+    text-align: justify;
+}
+
+.edit-dorm__button-container{
+    display: flex;
+    justify-content: center;
+    border: rgb(107, 107, 107, 0.4) .1vw solid;
+    border-top: none;
+}
+.edit-dorm__button-container--bottom{
+    border: none;
+}
+
+.edit-dorm__button {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    height: 3.5vw;
+    min-height: 30px;
+    padding: 1vw;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    align-self: center;
+    margin: 1.25vw;
+    font-size: calc(7px + 0.75vw);
+
+}
+.edit-dorm__button:hover {
+    background-color: white;
+    color: black;
+}
+.edit-dorm__upload{
+    width: 16vw;
+    min-width: 120px;
+}
+.edit-dorm__delete-photo{
+    width: 13vw;
+    min-width: 110px;
+}
+.edit-dorm__save {
+    width: 15.75vw;
+    min-width: 105px;
+}
+.edit-dorm__delete{
+    width: 13vw;
+    min-width: 95px;
+}
+
+/* ADD DORM */
+
+/* ABOUT */
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-content{
+    width: 70vw;
+    word-wrap: break-word;
+    text-align: justify;
+    margin-top: 5vw;
+    background: rgba(0, 0, 0, 0.15);
+    padding-block: 1.6vw;
+    padding-inline: 2.25vw;
+}
+.about__title{
+    font-size: calc(12px + 1.35vw);
+    text-indent: 2vw;
+    font-weight: bold;
+}
+.about__essay {
+    font-size: calc(6px + .85vw);
+    text-indent: 2vw;
+    line-height: calc(7px + 1.5vw);
+}
+.about__socials{
+    align-self: center;
+    display: flex;
+    align-items: center;
+    margin-top: 1.5vw;
+}
+.about__follow-text {
+    font-size: calc(10px + 1vw);
+    margin-right: .5vw;
+}
+.fa{
+    padding: calc(5px + .7vw);
+    font-size: calc(4px + 1.5vw);
+    text-align: center;
+    text-decoration: none;
+    margin-inline: 0.5vw;
+    background-color: black;
+    color: white;
+    border-radius: 20%;
+    transition: color 0.25s, background-color 0.3s;
+}
+.fa:hover{
+    color: black;
+    background-color: white;
+}
+.fa-facebook{
+    padding-inline: calc(5px + 0.975vw);
+}
+
+/* OWNER INFO */
+.owner-info{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vw;
+}
+
+.owner-info-box{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 55vw;
+    min-width: 280px;
+    height: fit-content;
+    border: rgb(107, 107, 107, 0.4) .1vw solid;
+}
+.owner-info__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 4.2vw;
+    min-height: 27px;
+    color: white;
+    font-size: calc(7px + 1.2vw);
+    margin-bottom: 0;
+    width: 100%;
+    margin-top: 0;
+}
+
+/* Owner Info: GALLERY */
+.owner-info__gallery{
+	height: fit-content;
+    display: flex;
+    border-bottom: rgb(107, 107, 107, 0.4) .1vw solid;
+    justify-content: center;
+}
+.owner-info__profile-pic {
+    max-width: 100%;
+    min-width: 21.69vw;
+    max-height: 30vw;
+    display: block;
+}
+
+
+/* Owner Info: DETAILS  */
+.owner-info__name-section{
+    padding-top: 2%;
+}
+.owner-info__owner-name{
+    font-size: calc(11px + 1.5vw);
+    font-weight: bold;
+    padding-left: 3vw;
+}
+.owner-info__seller-type{
+    font-size: calc(7px + 0.7vw);
+    margin: 0;
+    margin-top: .4%;
+    padding-left: 3.5vw;
+}
+
+.owner-info__details-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+    height: 14.75vw;
+    margin-inline: 2.75vw;
+    color: rgb(77, 77, 77);
+    font-size: calc(6px + 0.8vw);
+}
+.owner-info__details-section > div{
+    padding-bottom: .3vw;
+    border-bottom: rgb(107, 107, 107, 0.2) 0.1vw solid;
+    display: block;
+    margin-bottom: 0.5vw;
+}
+.owner-info__value {
+    float: right;
+    color: black;
+}
+
+/* Owner Info: OTHER DORMS */
+.owner-info__other-dorms--title{
+    text-align: center;
+    font-size: calc(11px + 1.5vw);
+    padding-left: 3vw;
+    margin-bottom: 0;
+}
+#owner-info__univ-list{
+    margin-top: 2%;
+    margin-bottom: 5.75vw;
+}
+
+
+/* MY ACCOUNT */
+.my-account__title{
+    font-weight: bold;
+}
+.my-account__bot-button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.my-account__edit {
+    font-size: calc(5px + 0.75vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    width: 13vw;
+    height: 3.5vw;
+    min-width: 65px;
+    min-height: 23px;
+    padding: 1vw;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    margin: 1.25vw;
+    margin-bottom: 2.5vw;
+}
+.my-account__edit:hover {
+    background-color: white;
+    color: black;
+}
+
+/* EDIT PROFILE */
+.edit-profile__owner-name{
+    font-size: calc(7px + 1.25vw);
+    font-weight: bold;
+    margin-left: 3vw;
+    padding-left: 1.5%;
+}
+.edit-profile__value {
+    float: right;
+    color: black;
+    text-align: right;
+    font-size: calc(3px + 0.775vw);
+}
+.edit-profile__button-container{
+    border-inline: none;
+}
+
+.edit-profile__value--phone{
+    width: 12vw;
+}
+.edit-profile__value--email{
+    width: 16vw;
+}
+.edit-profile__value--facebook{
+    width: 20vw;
+}
+.edit-profile__value--viber{
+    width: 12vw;
+}
+.edit-profile__value--preferred{
+    width: 15vw;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Home</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-logged-in.ejs') %>
+
+    <!-- HOME -->
+    <img src="images/home-bg-condo2.jpg" alt="" class="home-bg--img">
+    <div class="home-bg__overlay"></div>
+    <!-- ^^^^HOME BACKGROUND^^^^^ -->
+    <div class="home">
+            <a href="" class="home__logo--link">
+                <img src="images/acadorm-logo-transparent.png" alt="" class="home__logo">
+            </a>
+            <div class="home__search-box">
+                <input type="text" placeholder="Find Your University" class="home__search-box-input" oninput="suggestUniversity(this)" maxlength="100">
+                <div class="home__search-dropdown" id="home-search">
+                    <a id="home-UST" onclick="enterSearch(this)">University Of Santo Tomas</a>
+                    <a id="home-UP" onclick="enterSearch(this)">University Of The Philippines</a>
+                    <a id="home-ADMU" onclick="enterSearch(this)">Ateneo De Manila University</a>
+                    <a id="home-DLSU" onclick="enterSearch(this)">De La Salle University</a>
+                </div>
+            </div>
+
+
+    </div>   
+    <script src="/script.js"></script>
+</body>
+</html>

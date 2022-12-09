@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Verification</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-not-logged-in.ejs') %>
+
+    <!-- VERIFICATION -->
+    <div class="log-in">
+        <div class="verification__box">
+            <p class="verification__title">Email Sent</p>
+            <p class="verification__msg">We sent an email to p*t*****a@gmail.com with a link to verify your account.</p>
+            <a href="/verification" class="verification__resend--link">
+                <button class="log-in__button verification__resend">Resend Verification Link</button>
+            </a>
+        </div>
+        <a href="/log-in" class="log-in__register--text verification__back">Back to Login</a>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

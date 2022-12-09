@@ -1,0 +1,23 @@
+<div class="nav">
+    <a href="/index" class="nav__logo--link">
+        <img src="images/acadorm-logo-transparent.png" alt="" class="nav__logo">
+    </a>
+    <a href="/index" class="nav__home">Home</a>
+    <div class="nav__dorms-container">
+        <a href="/dorms" class="nav__dorms" id="nav__dorms-id"> Dorms <i class='fas fa-angle-down'></i></a>
+        <div class="nav__dorms-dropdown" id="nav__dorms-dd-id">
+            <a onclick="enterSearch(this)">University Of Santo Tomas</a>
+            <a onclick="enterSearch(this)">University Of The Philippines</a>
+            <a onclick="enterSearch(this)">Ateneo De Manila University</a>
+            <a onclick="enterSearch(this)">De La Salle University</a>
+            <!-- HIDDEN FORM -->
+            <form action="/dorms" method="GET" style="display: none;" id="search-to-dorm">
+                <input type="text" id="input-to-dorm" form="search-to-dorm" name="searchUni">
+            </form> 
+        </div>
+    </div>
+    <a href="/about" class="nav__about">About</a>
+    <a href="/log-in" class="nav__log-in--link">
+        <button class="nav__log-in">Log In</button>
+    </a>
+</div>

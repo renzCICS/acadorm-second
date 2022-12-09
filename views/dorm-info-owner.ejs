@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Dorm Info</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-logged-in.ejs') %>
+    
+    <!-- DORM INFO - OWNER -->
+    <div class="dorm-info">
+        <div class="dorm-info-box">
+            <div class="dorm-info__header">
+                <div class="dorm-info__title-container">
+                    <div class="dorm-info__title-section">
+                        <span class="dorm-info__title"><%= items[0].dorm_name %></span>
+                        <p class="dorm-info__near">Near <span class="dorm-info__university"><%= items[0].uni %></span></h5>
+                    </div>
+                    <div class="dorm-info__price-section">₱<span class="dorm-info__price"><%= items[0].price %></span>/month
+                    </div>
+                </div>
+                <div class="dorm-info__details-section">
+                    <div class="dorm-info__sharing">Sharing<span class="dorm-info__value"><%= items[0].sharing %> persons</span></div>
+                    <div class="dorm-info__bedrooms">Bedrooms<span class="dorm-info__value"><%= items[0].bedroom %></span></div>
+                    <div class="dorm-info__baths">Baths<span class="dorm-info__value"><%= items[0].bath %></span></div>
+                    <div class="dorm-info__type">Type<span class="dorm-info__value"><%= items[0].type %></span></div>
+                    <div class="dorm-info__location">Location  <span class="dorm-info__value"><%= items[0].location %></span></div>
+                </div>
+            </div>
+            <div class="dorm-info__gallery-container">
+                <!-- <s id="s1"></s> 
+                <s id="s2"></s>
+                <s id="s3"></s>
+                <s id="s4"></s> -->
+                <% for (let i = 0; i < items[0].dorm_photos.data.length; i++) { %>
+                    <s id="s<%= i + 1%>"></s> 
+                <% }%>
+
+
+                <div class="dorm-info__gallery" id="dorm-gallery">
+                    <% for (let i = 0; i < items[0].dorm_photos.data.length; i++) { %>
+                        <div class="dorm-info__img-container">
+                            <img alt="" class="dorm-info__image" src="data:image/<%=items[0].dorm_photos.contentType%>;base64,<%=items[0].dorm_photos.data[i].toString('base64')%>">
+
+                        </div>
+                    <% }%>
+
+                    <!-- <div class="dorm-info__img-container">
+                        <img src="images/property-1.JPG" alt="" class="dorm-info__image">
+                    </div>
+                    <div class="dorm-info__img-container">
+                        <img src="images/property-2.JPG" alt="" class="dorm-info__image">
+                    </div>
+                    <div class="dorm-info__img-container">
+                        <img src="images/property-3.JPG" alt="" class="dorm-info__image">
+                    </div>
+                    <div class="dorm-info__img-container">
+                        <img src="images/property-4.JPG" alt="" class="dorm-info__image">
+
+                    </div> -->
+                </div>
+
+                <div class="dorm-info__slider">
+                    <% for (let i = 1; i < items[0].dorm_photos.data.length+1; i++) { %>
+                        <% let before; %>
+                        <% let next; %>
+                        <% if(i == 1) {%>
+                            <% before = items[0].dorm_photos.data.length%>
+                        <% } else {%>
+                            <% before = i-1%>
+                        <% }%>
+
+                        <% if(i == items[0].dorm_photos.data.length) {%>
+                            <% next = 1%>
+                        <% } else {%>
+                            <% next = i+1%>
+                        <% }%>
+                        <div><a href="#s<%=before%>"></a><a href="#s<%=next%>"></a></div>
+                    <% }%>
+                    <!-- <div><a href="#s4"></a><a href="#s2"></a></div>
+                    <div><a href="#s1"></a><a href="#s3"></a></div>
+                    <div><a href="#s2"></a><a href="#s4"></a></div>
+                    <div><a href="#s3"></a><a href="#s1"></a></div> -->
+                </div>
+            </div>
+            <div class="dorm-info__desc-section">
+                <span class="dorm-info__desc-title">Dorm Description</span>
+                <p class="dorm-info__desc-text"><%= items[0].description %></p>
+                <a href="/edit-dorm/<%= items[0].dorm_id %>" class="dorm-info__contact--link">
+                    <button class="dorm-info__contact-button dorm-info-owner__edit">Edit Dorm</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

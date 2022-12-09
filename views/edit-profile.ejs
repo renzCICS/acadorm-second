@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Edit Profile</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <% items.forEach(function(owner) { %>
+
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-logged-in.ejs') %>
+
+    <!-- OWNER INFO -->
+    <div class="owner-info">
+        <div class="owner-info-box">
+            <p class="owner-info__title my-account__title">Edit Profile</p>
+            <div class="owner-info__gallery">
+                <% if (owner.owner_photo.data.length > 0) { %>
+                    <img alt="" class="owner-info__profile-pic" src="data:image/<%=owner.owner_photo.contentType%>;base64,<%=owner.owner_photo.data[0].toString('base64')%>">
+                <% } %> 
+            </div>
+            <div class="edit-dorm__button-container add-dorm__button-container edit-profile__button-container">         
+                <input form="profile-form" type="file" name="owner_photo" id="file" style="display: none;" accept="image/*" onchange="validateUpload(this)">
+                <button class="edit-dorm__button edit-dorm__upload" onclick="thisFileUpload()">Upload Photo</button>
+                <form action="/edit-profile/deletePhoto/<%=owner.owner_id %>" method="get">
+                    <button type="submit" class="edit-dorm__button edit-dorm__delete-photo">Delete Photo</button>
+                </form>
+            </div>
+            <form action="/edit-profile/<%=owner.owner_id %>" method="post" enctype="multipart/form-data" onsubmit="return validateEditEmail()" id="profile-form">
+                <div class="owner-info__name-section">
+                    <input type="text" name="owner_name" placeholder="Full Name" value="<%= owner.owner_name%>" class="edit-profile__owner-name" oninput="validateNameInput(this)" onpaste="validateNamePaste(this, event)" maxlength="50" required>
+                    <p class="owner-info__seller-type">Actual Owner</p>
+                </div>
+                <div class="owner-info__details-section">
+                    <div class="owner-info__phone">Phone<input type="text" placeholder="" name="phone" value="<%=owner.phone%>" class="edit-profile__value edit-profile__value--phone" maxlength="18" oninput="validatePhoneInput(this)" onpaste="validatePhonePaste(this, event)" required></div>
+                    <div class="owner-info__email">E-mail<input type="email" placeholder="" name="<%=owner.email%>" value="<%=owner.email%>" class="edit-profile__value edit-profile__value--email" required id="edit-email-input" maxlength="254"></div>
+                    <div class="owner-info__facebook">Facebook<input type="text" name="facebook" placeholder="facebook.com/" value="<%=owner.facebook%>" class="edit-profile__value edit-profile__value--facebook" id="edit-facebook-input" onblur="fixText()" onchange="fixText()" maxlength="43"></div>
+                    <div class="owner-info__viber">Viber<input type="text" placeholder="" name="viber" value="<%=owner.viber%>" class="edit-profile__value edit-profile__value--viber" maxlength="18" oninput="validatePhoneInput(this)" onpaste="validatePhonePaste(this, event)"></div>
+                    <div class="owner-info__preferred">Preferred Communication<input type="text" name="prefer_comm" placeholder="Phone/Email/Facebook/Viber" value="<%= owner.prefer_comm%>" class="edit-profile__value edit-profile__value--preferred" list="defaultCommunications" pattern="Phone|Email|Facebook|Viber" oninput="capitalizeFirstLetter(this)" required>
+                        <datalist id="defaultCommunications">
+                            <option value="Phone">
+                            <option value="Email">
+                            <option value="Facebook">
+                            <option value="Viber">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="my-account__bot-button-container">
+                    <button type="submit" class="my-account__edit">Save Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+    <script src="/script.js"></script>
+</body>
+</html>

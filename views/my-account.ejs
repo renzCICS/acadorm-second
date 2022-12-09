@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | My Account</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-logged-in.ejs') %>
+    
+    <!-- OWNER INFO -->
+    <% items.forEach(function(owner) { %>
+
+    <div class="owner-info">
+        <div class="owner-info-box">
+            <p class="owner-info__title my-account__title">MY ACCOUNT</p>
+            <div class="owner-info__gallery">
+                <!-- <img src="images/dorm-owner-malcolm.png" alt="" class="owner-info__profile-pic"> -->
+                <% if (owner.owner_photo.data.length > 0) { %>
+                    <img alt="" class="owner-info__profile-pic" src="data:image/<%=owner.owner_photo.contentType%>;base64,<%=owner.owner_photo.data[0].toString('base64')%>">
+                <% } %> 
+            </div>
+            <div class="owner-info__name-section">
+                <span class="owner-info__owner-name"><%= owner.owner_name%></span>
+                <p class="owner-info__seller-type">Actual Owner</p>
+            </div>
+            <div class="owner-info__details-section">
+                <div class="owner-info__phone">Phone<span class="owner-info__value"><%=owner.phone%></span></div>
+                <div class="owner-info__email">E-mail<span class="owner-info__value"><%=owner.email%></span></div>
+                <div class="owner-info__facebook">Facebook<span class="owner-info__value">facebook.com/<%=owner.facebook%></span></div>
+                <div class="owner-info__viber">Viber<span class="owner-info__value"><%=owner.viber%></span></div>
+                <div class="owner-info__preferred">Preferred Communication<span class="owner-info__value"><%= owner.prefer_comm%></span></div>
+            </div>
+            <div class="my-account__bot-button-container">
+                <a href="/edit-profile/<%= owner.owner_id%>" class="my-account__edit--link">
+                    <button class="my-account__edit">Edit Profile</button>
+                </a>
+                <a href="/<%= owner.owner_id%>/add-dorm" class="my-account__edit--link">
+                    <button class="my-account__edit">Add Dorm</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="owner-info__other-dorms--title">My Dorms</div>
+    <div class="univ-list-container" id="owner-info__univ-list">
+        <% dormItems.forEach(function(dorm) { %>
+            <div class="univ-list__item">
+                <% if (dorm.dorm_photos.data.length > 0) { %>
+                    <img alt="" class="owner-info__profile-pic" src="data:image/<%=dorm.dorm_photos.contentType%>;base64,<%=dorm.dorm_photos.data[0].toString('base64')%>">
+                <% } %> 
+                <a href="/dorm-info-owner/<%=dorm.dorm_id%>" class="univ-list__link">
+                    <div class="univ-list__overlay">
+                        <div class="univ-list__text-container">
+                            <p id="list__text--title" class="univ-list__text"><%=dorm.dorm_name%></p>
+                            <p class="univ-list__text">Price: <span id="list__text--price">₱<%=dorm.price%>/month</span></p>
+                            <p class="univ-list__text">BR: <span id="list__text--bedrooms"><%=dorm.bedroom%> bedrooms</span></p>
+                            <p class="univ-list__text">Sharing: <span id="list__text--persons"><%=dorm.sharing%> persons</span></p>
+                            <p class="univ-list__text">Near <span id="list__text--university"><%=dorm.uni%></span></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <%})%> 
+        <!-- <div class="univ-list__item">
+            <img src="images/property-4.JPG" alt="" class="univ-list__dorm-img">
+            <a href="/dorm-info-owner" class="univ-list__link">
+                <div class="univ-list__overlay">
+                    <div class="univ-list__text-container">
+                        <p id="list__text--title" class="univ-list__text">Teeda Apartments</p>
+                        <p class="univ-list__text">Price: <span id="list__text--price">₱15000</span></p>
+                        <p class="univ-list__text">BR: <span id="list__text--bedrooms">4 bedrooms</span></p>
+                        <p class="univ-list__text">Sharing: <span id="list__text--persons">6 persons</span></p>
+                        <p class="univ-list__text">Near <span id="list__text--university">De La Salle University</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="univ-list__item">
+            <img src="images/property-5.JPG" alt="" class="univ-list__dorm-img">
+            <a href="/dorm-info-owner" class="univ-list__link">
+                <div class="univ-list__overlay">
+                    <div class="univ-list__text-container">
+                        <p id="list__text--title" class="univ-list__text">GTX Apartments</p>
+                        <p class="univ-list__text">Price: <span id="list__text--price">₱15000</span></p>
+                        <p class="univ-list__text">BR: <span id="list__text--bedrooms">1 bedroom</span></p>
+                        <p class="univ-list__text">Sharing: <span id="list__text--persons">Solo</span></p>
+                        <p class="univ-list__text">Near <span id="list__text--university">Ateneo de Manila University</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="univ-list__item">
+            <img src="images/property-6.JPG" alt="" class="univ-list__dorm-img">
+            <a href="/dorm-info-owner" class="univ-list__link">
+                <div class="univ-list__overlay">
+                    <div class="univ-list__text-container">
+                        <p id="list__text--title" class="univ-list__text">Dude Dormitory</p>
+                        <p class="univ-list__text">Price: <span id="list__text--price">₱13200</span></p>
+                        <p class="univ-list__text">BR: <span id="list__text--bedrooms">3 bedrooms</span></p>
+                        <p class="univ-list__text">Sharing: <span id="list__text--persons">3 persons</span></p>
+                        <p class="univ-list__text">Near <span id="list__text--university">University of the Philippines</span></p>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+    <% }) %>
+    <script src="/script.js"></script>
+</body>
+</html>

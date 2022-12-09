@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcaDorm | Register</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/94d4f3205c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <%- include('./partials/nav-not-logged-in.ejs') %>
+    
+
+
+
+    <!-- Register -->
+    <%- include('./partials/messages.ejs') %>
+    <div class="log-in">
+        <form action="/register"  method="POST" class="log-in__box" id="register__box" onsubmit="return validateForm()" >
+            <input form="register__box" type="text" name="email" placeholder="Email" id="log-in__email" class="log-in__input" maxLength="254" required >
+            <input form="register__box" type="text" name="username" placeholder="Username" id="log-in__username" class="log-in__input" maxLength="16" required title="Username should not contain any space or symbol" oninput="validateUsernameInput(this)" onpaste="validateUsernamePaste(this, event)">
+            <input form="register__box" type="password" name="password" placeholder="Password" id="log-in__password" class="log-in__input" maxLength="254" title="Password must be alphanumeric & greater than 8 characters" required>
+            <div class="register__register--link">
+                <button type="submit" form="register__box" class="log-in__button" id="register__register--button">Register</button>
+            </div>
+            <!-- </div> -->
+        </form>
+        <div class="log-in__register--text-container">
+            <p class="log-in__register--text">Already have an account?</p>
+            <p class="log-in__register--text">Sign In!</p>
+        </div>
+        <a href="/log-in">
+            <button class="log-in__register">Log In</button>
+        </a>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
