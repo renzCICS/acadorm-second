@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt')
 const flash = require('connect-flash')
 const session = require('express-session')
 const { ensureAuthenticated } = require('./config/auth');
+require('dotenv').config()
 
 const multer = require('multer')
 
@@ -39,13 +40,13 @@ const uploads = multer({storage})
 const app = express();
 
 //connect to mongodb atlas
-const dbURI = "mongodb+srv://practice:ust@cluster0.l1xzlip.mongodb.net/acadorm?retryWrites=true&w=majority";
-mongoose.connect(dbURI, { useNewUrlParser: true}, {useUnifiedTopology: true }, mongoose.set('strictQuery', true))
+// const dbURI = "mongodb+srv://practice:ust@cluster0.l1xzlip.mongodb.net/acadorm?retryWrites=true&w=majority";
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true}, {useUnifiedTopology: true }, mongoose.set('strictQuery', true))
     .then((result) => {
         console.log('connected to db')
 
         //connect to application server
-        app.listen(3000, () => {
+        app.listen(process.env.PORT || 3000, () => {
             console.log('app listening on port 3000')
         })
     })
